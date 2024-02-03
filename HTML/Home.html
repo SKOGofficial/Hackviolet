@@ -16,6 +16,17 @@
             color: #fff;
             padding: 10px;
             text-align: center;
+            position: relative; /* Add position relative to header */
+        }
+        .login-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #CF4420;
+            border-radius: 5px;
         }
         nav {
             background-color: #CF4420;
@@ -37,16 +48,13 @@
             list-style-type: none;
             padding:5px;
         }
-
         #dropdown-meals {
             display:none;
         }
-
         #menu-meals:hover #dropdown-meals {
             display:block;
             list-style-type: none;
             text-align: center;
-            
         }
         section {
             padding: 20px;
@@ -60,26 +68,19 @@
             bottom: 0;
             width: 100%;
         }
-        
     </style>
 </head>
 <body>
     <header>
         <h1>Welcome to Hokie Feast</h1>
+        <a href="login.html" class="login-button">Login</a> <!-- Login button -->
     </header>
     <nav>
         <a href="#">Home</a>
         <a href="#">Inventory</a>
         <a href="#">Find a Recipe</a>
         <ul id="menu-meals">
-            <li><a href="#">Meals I've Had</a>
-                <!-- <ul id="dropdown-meals">
-                    <li><a href="#">Today</a></li>
-                    <li><a href="#">This Week</a></li>
-                    <li><a href="#">This Month</a></li>
-                    <li><a href="#">All Meals</a></li>
-                </ul> -->
-            </li>
+            <li><a href="#">Meals I've Had</a></li>
         </ul>
     </nav>
     <section>
