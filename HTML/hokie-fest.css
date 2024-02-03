@@ -3,12 +3,24 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+    overflow-y: scroll; /* Add overflow-y property to enable vertical scroll */
 }
 header {
     background-color: #630031;
     color: #fff;
     padding: 10px;
     text-align: center;
+    position: relative; /* Add position relative to header */
+}
+.login-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    background-color: #CF4420;
+    border-radius: 5px;
 }
 nav {
     background-color: #CF4420;
@@ -30,16 +42,13 @@ nav a:hover {
     list-style-type: none;
     padding:5px;
 }
-
 #dropdown-meals {
     display:none;
 }
-
 #menu-meals:hover #dropdown-meals {
     display:block;
     list-style-type: none;
     text-align: center;
-    
 }
 section {
     padding: 20px;
