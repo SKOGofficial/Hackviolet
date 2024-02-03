@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hokie Feast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #630031;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #CF4420;
+            padding: 10px;
+            text-align: center;
+            list-style-type: none;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+        }
+        #menu-meals{
+            display:inline-block;
+            list-style-type: none;
+            padding:5px;
+        }
+
+        #dropdown-meals {
+            display:none;
+        }
+
+        #menu-meals:hover #dropdown-meals {
+            display:block;
+            list-style-type: none;
+            text-align: center;
+            
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #630031;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Hokie Feast</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Inventory</a>
+        <a href="#">Find a Recipe</a>
+        <ul id="menu-meals">
+            <li><a href="#">Meals I've Had</a>
+                <!-- <ul id="dropdown-meals">
+                    <li><a href="#">Today</a></li>
+                    <li><a href="#">This Week</a></li>
+                    <li><a href="#">This Month</a></li>
+                    <li><a href="#">All Meals</a></li>
+                </ul> -->
+            </li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Home</h2>
+        <p>This is a simple website created using HTML.</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Hokie Feast. All rights reserved.</p>
+    </footer>
+</body>
+</html>
