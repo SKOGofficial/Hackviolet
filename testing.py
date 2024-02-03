@@ -1,12 +1,12 @@
 import requests
 import json
 
+#lists turns into a URL format
 def ingredients_List(foods):
    result_string = ',+'.join(ingredients) 
    return result_string
 
 #link info
-
 POSTS_API_URL = ""
 main_url = "https://api.spoonacular.com/recipes/"
 mode = "findByIngredients" 
@@ -16,7 +16,6 @@ argument_details = ""
 number_of_recipies = "&number=1"
 
 #gather initial ingredients and format into url acceptable format
-
 response = input("What are the ingredients you have in your pantry make a list seperarated by commas ',' \n" )
 
 ingredients =  [element.strip() for element in response.split(',')]
@@ -24,7 +23,6 @@ argument_details =  ingredients_List(ingredients)
 POSTS_API_URL = main_url + mode + API_key + arguments + argument_details + number_of_recipies
 
 #request info based on URL, Convert to string
-
 Value_returned = requests.get(POSTS_API_URL)
 if Value_returned.status_code == 200:
     instructions = (Value_returned.text)
@@ -39,7 +37,6 @@ Id = str(recipe_dict_list['id'])
 print(Id)
 
 #Request new information based on recipe ID, convert to JSON and print
-
 POSTS_API_URL = main_url + Id + "/analyzedInstructions" + API_key
 print(POSTS_API_URL)
 returned = requests.get(POSTS_API_URL)
