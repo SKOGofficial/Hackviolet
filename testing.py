@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> a764c3275ca794f09a9ec244c551190b532620b0
 import requests
 
 POSTS_API_URL = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=95613e06ce1c4cdf9e1044ba0bb8b510&ingredients=apples,+flour,+sugar&number=2"
