@@ -5,21 +5,25 @@ def ingredients_List(foods):
    result_string = ',+'.join(ingredients) 
    return result_string
 
+#link info
+
 POSTS_API_URL = ""
 main_url = "https://api.spoonacular.com/recipes/"
-mode = "findByIngredients" #different modes available, make method for this
-API_key = "?apiKey=95613e06ce1c4cdf9e1044ba0bb8b510" #for convinience make an insert API Key method for later
+mode = "findByIngredients" 
+API_key = "?apiKey=95613e06ce1c4cdf9e1044ba0bb8b510" 
 arguments = "&ingredients="
-argument_details = "" #a little bit more complicated because arguments depends on the mode, Save for later
+argument_details = "" 
 number_of_recipies = "&number=1"
 
-response = input("What are the ingredients you have in your pantry\nmake a list seperarated by commas ',' \n" )
+#gather initial ingredients and format into url acceptable format
 
-#going from response to getting values
-#getting recipe ID and missing ingredients, extra ingredients and the rest of the matrerials 
+response = input("What are the ingredients you have in your pantry make a list seperarated by commas ',' \n" )
+
 ingredients =  [element.strip() for element in response.split(',')]
 argument_details =  ingredients_List(ingredients)
 POSTS_API_URL = main_url + mode + API_key + arguments + argument_details + number_of_recipies
+
+#request info based on URL, Convert to string
 
 Value_returned = requests.get(POSTS_API_URL)
 if Value_returned.status_code == 200:
@@ -27,17 +31,17 @@ if Value_returned.status_code == 200:
 else:
     print(f"Request failed with status code: {Value_returned.status_code}")
 
+#convert to Json dictionary and access recipe ID
 
-print(type(instructions))
-
-#using the ID to find the recipe instrictions 
-# Convert JSON string to a Python list of dictionaries
 length =  len(instructions)
 recipe_dict_list = json.loads(instructions[1:length -1])
 Id = str(recipe_dict_list['id'])
+print(Id)
 
-POSTS_API_URL = main_url + Id + "/analyzedInstructions"
+#Request new information based on recipe ID, convert to JSON and print
 
+POSTS_API_URL = main_url + Id + "/analyzedInstructions" + API_key
+print(POSTS_API_URL)
 returned = requests.get(POSTS_API_URL)
 if returned.status_code == 200:
     instructions = (returned.text)
