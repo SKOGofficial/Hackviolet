@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Steps</title>
+</head>
+<body>
+    <h1>Recipe Steps</h1>
+    
+    {% if steps_list %}
+        <ul>
+            {% for step in steps_list %}
+                <li>{{ step }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No steps available.</p>
+    {% endif %}
+</body>
+</html>
