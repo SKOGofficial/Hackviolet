@@ -3,90 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="hokie-fest.css">
     <title>Your Inventory</title>
     <style>
-        /* CSS styles for the "Enter Your Ingredients" section */
-        #ingredient-input {
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #ingredient-input h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        button[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        /* CSS styles for the "Ingredients Display" section */
-        #ingredients-display {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #ingredients-display h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        #ingredient-list {
-            list-style-type: none;
-            padding: 0;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            overflow-y: scroll;
         }
-
-        #ingredient-list li {
-            margin-bottom: 5px;
+        header {
+            background-color: #630031;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        nav {
+            background-color: #CF4420;
+            padding: 10px;
+            text-align: center;
+            list-style-type: none;
+            margin: 0; /* Add this line to remove default margin */
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px; /* Adjust padding for better spacing */
+            display: inline-block; /* Add this line to make links inline */
+        }
+        nav a:hover {
+            background-color: #630031; /* Change hover color */
+        }
+        section {
+            margin-top: 20px; /* Add margin for better spacing */
+            margin-bottom: 20px; /* Add margin for better spacing */
+        }
+        section h2 {
+            color: #630031;
         }
     </style>
     <script>
-        // Define an empty array to store the entered ingredients
         let inventory = [];
 
         function handleSubmit(event) {
             event.preventDefault(); // Prevent the form from submitting normally
             const ingredientsInput = document.getElementById('ingredients');
-            const ingredients = ingredientsInput.value;
-            // Push the entered ingredients into the inventory array
-            inventory.push(ingredients);
-            // Optionally, you can clear the input field after submitting
+            const expirationInput = document.getElementById('expiration');
+            const ingredient = ingredientsInput.value;
+            const expirationDate = expirationInput.value;
+            // Store the ingredient and its expiration date in an object
+            const item = { ingredient: ingredient, expirationDate: expirationDate };
+            // Push the object into the inventory array
+            inventory.push(item);
+            // Optionally, you can clear the input fields after submitting
             ingredientsInput.value = '';
+            expirationInput.value = '';
             // Update the displayed ingredients
+            displayIngredients();
+        }
+
+        function sortByExpiration() {
+            // Filter out items without expiration dates, then sort by expiration date
+            const itemsWithExpiration = inventory.filter(item => item.expirationDate);
+            itemsWithExpiration.sort((a, b) => {
+                return new Date(a.expirationDate) - new Date(b.expirationDate);
+            });
+            // Append items without expiration dates to the end
+            const itemsWithoutExpiration = inventory.filter(item => !item.expirationDate);
+            const sortedInventory = itemsWithExpiration.concat(itemsWithoutExpiration);
+            inventory = sortedInventory;
+            displayIngredients();
+        }
+
+        function sortByOrder() {
+            // No sorting needed, maintain the order entered
             displayIngredients();
         }
 
@@ -94,10 +85,15 @@
             const ingredientList = document.getElementById('ingredient-list');
             // Clear the existing list
             ingredientList.innerHTML = '';
-            // Populate the list with the entered ingredients
-            inventory.forEach(function(ingredient) {
+            // Populate the list with the entered ingredients and expiration dates
+            inventory.forEach(function(item) {
                 const listItem = document.createElement('li');
-                listItem.textContent = ingredient;
+                // Check if expiration date exists before displaying it
+                if (item.expirationDate) {
+                    listItem.textContent = `${item.ingredient} (Expires: ${item.expirationDate})`;
+                } else {
+                    listItem.textContent = item.ingredient;
+                }
                 ingredientList.appendChild(listItem);
             });
         }
@@ -105,26 +101,32 @@
 </head>
 <body>
     <header>
-        <h1>
-            Inventory
-        </h1>
+        <h1>Inventory</h1>
+        <nav>
+            <a href="Home.html">Home</a>
+            <a href="Inventory.html">Inventory</a>
+            <a href="find_a_recipe.html">Find a Recipe</a>
+            <ul id="menu-meals">
+                <li><a href="meals_ive_had.html">Meals I've Had</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="Home.html">Home</a>
-        <a href="Inventory.html">Inventory</a>
-        <a href="find_a_recipe.html">Find a Recipe</a>
-        <ul id="menu-meals">
-            <li><a href="#">Meals I've Had</a></li>
-        </ul>
-    </nav>
 
     <section id="ingredient-input">
         <h2>Enter Your Ingredients One at a Time</h2>
         <form onsubmit="handleSubmit(event)">
             <label for="ingredients">Ingredients:</label>
             <input type="text" id="ingredients" name="ingredients" placeholder="Enter ingredients...">
+            <label for="expiration">Expiration Date:</label>
+            <input type="date" id="expiration" name="expiration">
             <button type="submit">Submit</button>
         </form>
+    </section>
+
+    <section id="sorting-options">
+        <h2>Sorting Options</h2>
+        <button onclick="sortByExpiration()">Sort by Expiration</button>
+        <button onclick="sortByOrder()">Sort by Order Entered</button>
     </section>
 
     <section id="ingredients-display">

@@ -26,10 +26,11 @@
     </nav>
     {% if steps_list %}
         <ul>
-            {% for step in steps_list %}
+            {% for step in steps %}
                 <li>{{ step }}</li>
             {% endfor %}
         </ul>
+        
     {% else %}
         <p>No steps available.</p>
     {% endif %}
