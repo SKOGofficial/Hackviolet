@@ -31,6 +31,7 @@ def getRecipe_Info_FromIngredients(user_List_ingredients):
    #convert to Json dictionary and access recipe ID
    for dic in instructions:
       recipe_dict_list = json.loads(dic)
+      
    length =  len(instructions)
    recipe_dict_list = json.loads(instructions[1:length -1])
    Id = str(recipe_dict_list['id'])
