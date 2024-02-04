@@ -10,7 +10,7 @@ def format_List_of_ingredients(foods):
 POSTS_API_URL = ""
 main_url = "https://api.spoonacular.com/recipes/"
 mode = "findByIngredients" 
-API_key = "?apiKey=95613e06ce1c4cdf9e1044ba0bb8b510" 
+API_key = "?apiKey=b0814cdcd47b4ef3901e0d10734d4cc7" 
 arguments = "&ingredients="
 argument_details = "" 
 number_of_recipies = "&number=1"

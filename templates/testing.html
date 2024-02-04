@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
    <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
-   <link rel="stylesheet" href="hokie-fest.css">
+   <link rel="stylesheet" href="{hokie-fest.css}">
 
 </script>
     <title>Find a Recipe</title>
@@ -17,11 +17,11 @@
         </h1>
     </header>
     <nav>
-        <a href="Home.html">Home</a>
-        <a href="Inventory.html">Inventory</a>
-        <a href="find_a_recipe.html">Find a Recipe</a>
+        <a href="{{ url_for('home_page') }}">Home</a>
+        <a href="{{ url_for('inventory') }}">Inventory</a>
+        <a href="{{ url_for('find_a_recipe') }}">Find a Recipe</a>
         <ul id="menu-meals">
-            <li><a href="meals_ive_had.html">Meals I've Had</a></li>
+            <li><a href="{{ url_for ('meals_ive_had')}}">Meals I've Had</a></li>
         </ul>
     </nav>
     {% if steps_list %}
