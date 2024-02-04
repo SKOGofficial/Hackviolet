@@ -3,10 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="hokie-fest.css">
     <title>Your Inventory</title>
     <style>
-        /* CSS styles remain the same as before */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            overflow-y: scroll;
+        }
+        header {
+            background-color: #630031;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        nav {
+            background-color: #CF4420;
+            padding: 10px;
+            text-align: center;
+            list-style-type: none;
+            margin: 0; /* Add this line to remove default margin */
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px; /* Adjust padding for better spacing */
+            display: inline-block; /* Add this line to make links inline */
+        }
+        nav a:hover {
+            background-color: #630031; /* Change hover color */
+        }
+        section {
+            margin-top: 20px; /* Add margin for better spacing */
+            margin-bottom: 20px; /* Add margin for better spacing */
+        }
+        section h2 {
+            color: #630031;
+        }
     </style>
     <script>
         let inventory = [];
@@ -66,13 +101,16 @@
 </head>
 <body>
     <header>
-        <h1>
-            Inventory
-        </h1>
+        <h1>Inventory</h1>
+        <nav>
+            <a href="Home.html">Home</a>
+            <a href="Inventory.html">Inventory</a>
+            <a href="find_a_recipe.html">Find a Recipe</a>
+            <ul id="menu-meals">
+                <li><a href="meals_ive_had.html">Meals I've Had</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <!-- Navigation links remain the same as before -->
-    </nav>
 
     <section id="ingredient-input">
         <h2>Enter Your Ingredients One at a Time</h2>
