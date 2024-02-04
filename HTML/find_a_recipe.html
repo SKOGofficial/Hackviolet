@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-   <script defer src="https://pyscript.net/alpha/pyscript.js"></script> -->
-   <link rel="stylesheet" href="hokie-fest.css">
-
-</script>
+    <link rel="stylesheet" href="hokie-fest.css">
     <title>Find a Recipe</title>
 </head>
 <body>
@@ -24,9 +20,29 @@
             <li><a href="meals_ive_had.html">Meals I've Had</a></li>
         </ul>
     </nav>
-    
 
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('ingredients');
+        }
 
-    
+        // Extract inventory array from query parameters
+        const inventory = JSON.parse(decodeURIComponent(getQueryParams()));
+
+        // Function to find recipes based on inventory
+        function findRecipes(inventory) {
+            // Your recipe-finding logic here
+            console.log('Inventory:', inventory);
+            // Example: Displaying a message
+            const message = document.createElement('p');
+            message.textContent = 'Recipes found based on your inventory:';
+            document.body.appendChild(message);
+        }
+
+        // Call function to find recipes
+        findRecipes(inventory);
+    </script>
 </body>
 </html>
