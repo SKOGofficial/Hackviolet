@@ -16,19 +16,14 @@ argument_details = ""
 number_of_recipies = "&number=1"
 
 #gather initial ingredients and format into url acceptable format
-<<<<<<< HEAD
 
 def getRecipe (input):
    ingredients =  [element.strip() for element in input.split(',')]
    argument_details =  ingredients_List(ingredients)
    POSTS_API_URL = main_url + mode + API_key + arguments + argument_details + number_of_recipies
-=======
-response = input("What are the ingredients you have in your pantry make a list seperarated by commas ',' \n" )
->>>>>>> ff46cb65440f55ff69200474654ae91f3e43243a
 
    #request info based on URL, Convert to string
 
-<<<<<<< HEAD
    Value_returned = requests.get(POSTS_API_URL)
    if Value_returned.status_code == 200:
       instructions = (Value_returned.text)
@@ -36,14 +31,6 @@ response = input("What are the ingredients you have in your pantry make a list s
       print(f"Request failed with status code: {Value_returned.status_code}")
 
    #convert to Json dictionary and access recipe ID
-=======
-#request info based on URL, Convert to string
-Value_returned = requests.get(POSTS_API_URL)
-if Value_returned.status_code == 200:
-    instructions = (Value_returned.text)
-else:
-    print(f"Request failed with status code: {Value_returned.status_code}")
->>>>>>> ff46cb65440f55ff69200474654ae91f3e43243a
 
    length =  len(instructions)
    recipe_dict_list = json.loads(instructions[1:length -1])
@@ -54,7 +41,6 @@ else:
    print(name)
    #Request new information based on recipe ID, convert to JSON and print
 
-<<<<<<< HEAD
    POSTS_API_URL = main_url + Id + "/analyzedInstructions" + API_key
    print(POSTS_API_URL)
    returned = requests.get(POSTS_API_URL)
@@ -72,14 +58,4 @@ else:
       instruction = steps['step']
       steps_list.append(instruction)
    return steps_list
-=======
-#Request new information based on recipe ID, convert to JSON and print
-POSTS_API_URL = main_url + Id + "/analyzedInstructions" + API_key
-print(POSTS_API_URL)
-returned = requests.get(POSTS_API_URL)
-if returned.status_code == 200:
-    instructions = (returned.text)
-else:
-    print(f"Request failed with status code: {returned.status_code}")
->>>>>>> ff46cb65440f55ff69200474654ae91f3e43243a
 
