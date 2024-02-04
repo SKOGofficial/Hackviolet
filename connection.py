@@ -3,7 +3,7 @@ import testing as t
 from flask import Flask, render_template
 
 app = Flask(__name__)
-steps_list = t.getRecipe("chicken, sauce, beef, ostritch")
+steps_list = t.getRecipe("lettuce, bread, chicken, bacon, olives")
     # Assuming steps_list is defined somewhere in your code
 
 
