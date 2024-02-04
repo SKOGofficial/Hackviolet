@@ -50,8 +50,6 @@
            padding:5px;
        }
        
-      
-
        section {
            padding: 20px;
        }
@@ -83,7 +81,6 @@
        
    </nav>
    <section>
-
        <h2>About Us</h2>
        <p>
             Hokie Feast is a student-made student made website to help people 
