@@ -119,22 +119,24 @@ def getRecipe (input):
       steps_list.append(instruction)
    return steps_list
 
-class myClass:
-   ingredients = []
-   names = []
-   ids = []
-   recipes = []
+class Inventory:
+    ingredients = []
+    names = []
+    ids = []
+    recipes = []
 
-   def __init__(self) -> None:
-      temp_food = input("food in your pantry: ")
-      self.foods = format_list(temp_food)
-      self.names, self.ids, self.recipes = getRecipe_Info_FromIngredients(temp_food)
-      list_of_recipe_instructions = getRecipe_steps(ids)
-   def addfood(food_list):
-      food = input("add food in your pantry: ")
-      words = format_list(food)
-      for word in words:
-         if word not in foods:
-            self.foods.append(word)
+    def __init__(self) -> None:
+        temp_food = input("Food in your pantry: ")
+        self.ingredients = self.format_list(temp_food)
+        self.names, self.ids, self.recipes = self.getRecipe_Info_FromIngredients(temp_food)
+        list_of_recipe_instructions = self.getRecipe_steps(self.ids)
+
+    def addfood(self, food_list):
+        words = self.format_list(food_list)
+        for word in words:
+            if word not in self.ingredients:
+                self.ingredients.append(word)
+
+
 
 
